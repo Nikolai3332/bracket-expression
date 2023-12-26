@@ -1,0 +1,47 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        char openBracket = '(';      
+        char closeBracket = ')';    
+        string userString = " ";     
+        int depth = 0;              
+        int maxDepth = 0;          
+
+        Console.Write("Введите символы, чтобы определить корректность и глубину строки.");
+        userString = Console.ReadLine();
+
+        foreach (int symbol in userString)
+        {
+            if (symbol == openBracket)
+            {
+                depth++;
+            }
+            else if (symbol == closeBracket)
+            {
+                depth--;
+            }
+
+            if (depth < 0)
+            {
+                break;
+            }
+
+            if (depth > maxDepth)
+            {
+                maxDepth = depth;
+            }
+        }
+
+        if (depth == 0)
+        {
+            Console.WriteLine("Является корректным скобочным выражение. Максимальная глубина: " + maxDepth);
+        }
+        else
+        {
+            Console.WriteLine("Не является корректным скобочным выражением.");
+        }
+
+        Console.ReadKey();
+    }
+}
